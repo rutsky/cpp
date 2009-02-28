@@ -29,12 +29,18 @@ public:
     TEST(--(--c.begin()) == --c.begin());
     TEST(--(--c.begin()) == c.begin());
     TEST(--c.begin() == c.end());
+    TEST(++(--c.begin()) == c.begin());
+    TEST(++(++(--(--c.begin()))) == c.begin());
+    TEST(++(--(--c.begin())) == c.begin());
 
     // Checking moving before containers begin.
     TEST(++c.end() == c.end());
     TEST(++(++c.end()) == ++c.end());
     TEST(++(++c.end()) == c.end());
     TEST(++c.end() == c.begin());
+    TEST(--(++c.end()) == c.end());
+    TEST(--(--(++(++c.end()))) == c.end());
+    TEST(--(++(++c.end())) == c.end());
   }
 
 #undef TEST
