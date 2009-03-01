@@ -14,4 +14,15 @@ namespace function
   template<>
   inline
   void f( double ) {}
+  
+  template< class T >
+  struct S
+  {
+  };
+  
+  template< class T >
+  bool operator==( S<T> const &a, S<T> const &b )
+  {
+    return false;
+  }
 }
